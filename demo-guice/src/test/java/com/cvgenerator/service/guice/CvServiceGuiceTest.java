@@ -15,6 +15,8 @@ import com.cvgenerator.dao.CvDao;
 import com.cvgenerator.entity.Company;
 import com.cvgenerator.entity.Cv;
 import com.cvgenerator.entity.Experience;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 
 public class CvServiceGuiceTest {
@@ -25,9 +27,9 @@ public class CvServiceGuiceTest {
 	
 	@BeforeMethod
 	public void init() {
-		
-		// Cas d'une injection par constructeur.
-		underTest = new CvService(cvDao);
+		Injector injector = Guice.createInjector(new ServiceTestModule());
+		underTest = injector.getInstance(CvService.class);
+		cvDao = injector.getInstance(CvDao.class);
 	}
 	
 	@Test
