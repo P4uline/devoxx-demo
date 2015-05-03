@@ -1,7 +1,6 @@
 package com.cvgenerator.service.guice;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class CvServiceGuiceTest {
 	
 	private CvService underTest;
 	
-	private CvDao cvDao = mock(CvDao.class);
+	private CvDao cvDao;
 	
 	@BeforeMethod
 	public void init() {
